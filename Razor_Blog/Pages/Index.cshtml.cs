@@ -25,7 +25,7 @@ namespace Razor_Blog.Pages
 
         public void OnGet()
         {
-            Articles = _context.Articles.Select(x=> new ArticleViewModel
+            Articles = _context.Articles.Where(x=>x.IsDeleted==false).Select(x=> new ArticleViewModel
             {
                 Id = x.Id,
                 Title = x.Title,
@@ -38,9 +38,15 @@ namespace Razor_Blog.Pages
 
         }
 
-        public void OnPost(IFormCollection form)
-        { }
-
+        //public void OnPost(IFormCollection form)
+        //{ }
+        public IActionResult OnGetDelete(int id)
+        {
+            var article = _context.Articles.First(x => x.Id == id);
+            article.IsDeleted=true;
+            _context.SaveChanges();
+            return RedirectToAction("./Index");
+        }
         public IActionResult Load()
         {
             return Page();

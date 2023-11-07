@@ -22,6 +22,8 @@
                 asp-route-id="@article.Id"
                 asp-route-title="@article.Title"
                 class="btn btn-primary">ادامه مطلب</a>
+             
+             <a asp-page-handler="Delete"  asp-route-id="@article.Id" class="btn btn-danger">حذف</a>
          </div>
      </div>
  </div>}

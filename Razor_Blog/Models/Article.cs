@@ -13,6 +13,7 @@ namespace Razor_Blog.Models
         public string PictureTitle { get; set; }
         public string ShortDescription { get; set; }
         public string Body { get; set; }
+        public bool IsDeleted { get; set; }
         public DateTime CreationDate { get; set; }
 
 
@@ -25,6 +26,7 @@ namespace Razor_Blog.Models
             PictureTitle = pictureTitle;
             ShortDescription = shortDescription;
             Body = body;
+            IsDeleted = false;
             CreationDate= DateTime.Now;
 
         }
